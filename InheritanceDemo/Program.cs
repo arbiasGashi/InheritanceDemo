@@ -23,9 +23,18 @@ namespace InheritanceDemo
 
             Console.WriteLine("Personat me mbiemer Gashi: \n");
 
-            var personatMeMbiemerGashi = kosova.KthePersonatSipasMbiemrit("Gashi");
+            var personatMeMbiemerGashi = kosova.KthePersonatSipasMbiemrit("Gashi"); // LINQ
+            var personatMeMbiemerGashi2 = kosova.KthePersonatSipasMbiemrit2("Gashi"); // PA LINQ
 
             foreach (var person in personatMeMbiemerGashi)
+            {
+                Console.WriteLine(person);
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("\n-------------------------------------------------------------------------------------");
+
+            foreach (var person in personatMeMbiemerGashi2)
             {
                 Console.WriteLine(person);
                 Console.WriteLine();

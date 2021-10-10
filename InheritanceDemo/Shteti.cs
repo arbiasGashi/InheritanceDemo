@@ -25,7 +25,7 @@ namespace InheritanceDemo
                 {
                     FirstName = firstNames[rnd.Next(0, firstNames.Count)],
                     LastName = lastNames[rnd.Next(0, lastNames.Count)],
-                    Nationality = "Kosovar"
+                    Nationality = rnd.Next(1,3) == 1 ? "Kosovar" : "Albanian"
                 };
 
                 Personat.Add(personi);
@@ -43,9 +43,41 @@ namespace InheritanceDemo
             return Personat.Where(x => x.LastName == mbiemri).ToList();
         }
 
+        public List<Personi> KthePersonatSipasMbiemrit2(string mbiemri)
+        {
+            var listaMePersonaMeMbiemer = new List<Personi>();
+
+            // Traverse (pershku) listen e personav -> for loop
+            for (int i = 1; i < Personat.Count; i++)
+            {
+                if (Personat[i].LastName == mbiemri)
+                {
+                    listaMePersonaMeMbiemer.Add(Personat[i]);
+                }
+            }
+
+            return listaMePersonaMeMbiemer;
+        }
+
         public List<Personi> KthePersonatSipasEmrit(string emri)
         {
             return Personat.Where(x => x.FirstName == emri).ToList();
+        }
+
+        public List<Personi> KthePersonatSipasEmrit2(string emri)
+        {
+            var listaMePersonaMeEmer = new List<Personi>();
+
+            // Traverse (pershku) listen e personav -> for loop
+            for (int i = 1; i < Personat.Count; i++)
+            {
+                if (Personat[i].LastName == emri)
+                {
+                    listaMePersonaMeEmer.Add(Personat[i]);
+                }
+            }
+
+            return listaMePersonaMeEmer;
         }
 
         /*
@@ -53,9 +85,9 @@ namespace InheritanceDemo
          * Implemento metoden qe kthen personat sipas nacionalitetit, p.sh Kosovar - kthen te gjithe kosovaret, apo Albanian qe kthen te gjithe
          * shqiptaret. Perdor LINQ.
          */
-        public List<Personi> KthePersonatSipasNacionalitetit(string emri)
+        public List<Personi> KthePersonatSipasNacionalitetit(string nacionaliteti)
         {
-            return null; // Implement here the logic
+            return Personat.Where(x => x.Nationality == nacionaliteti).ToList();
         }
 
     }
